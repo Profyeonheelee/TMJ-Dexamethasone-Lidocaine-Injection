@@ -1,0 +1,8 @@
+suppressPackageStartupMessages({library(readxl);library(igraph)})
+source(file.path(dirname(sub("^--file=", "", commandArgs(FALSE)[grepl("^--file=", commandArgs(FALSE))][1])), "_common.R"))
+dat<-read_excel(resolve_data_path(),sheet="Correlation_Input_Wide")
+sets<-list(VAS=c("VAS_Baseline","VAS_1st_FU","VAS_2nd_inj","VAS_2nd_FU","VAS_3rd_inj","VAS_3rd_FU","VAS_4th_inj","VAS_4th_FU"),CMO=c("CMO_Baseline","CMO_1st_FU","CMO_2nd_inj","CMO_2nd_FU","CMO_3rd_inj","CMO_3rd_FU","CMO_4th_inj","CMO_4th_FU"),MMO=c("MMO_Baseline","MMO_1st_FU","MMO_2nd_inj","MMO_2nd_FU","MMO_3rd_inj","MMO_3rd_FU","MMO_4th_inj","MMO_4th_FU"),`Pain-location burden`=c("Pain_Burden_Baseline","Pain_Burden_1st_FU","Pain_Burden_2nd_inj","Pain_Burden_2nd_FU","Pain_Burden_3rd_inj","Pain_Burden_3rd_FU","Pain_Burden_4th_inj","Pain_Burden_4th_FU"))
+vl<-c("Baseline","1st FU","2nd inj","2nd FU","3rd inj","3rd FU","4th inj","4th FU")
+plot_one<-function(cols,title){C<-cor(dat[,cols],use="pairwise.complete.obs",method="spearman");A<-C;diag(A)<-0;A[A<0]<-0;g<-graph_from_adjacency_matrix(A,mode="undirected",weighted=TRUE,diag=FALSE);E(g)$width<-.5+4*E(g)$weight;E(g)$color<-adjustcolor("darkorange",alpha.f=pmin(1,.2+E(g)$weight));V(g)$label<-vl;V(g)$size<-28;V(g)$color<-"white";V(g)$frame.color<-"grey40";plot(g,layout=layout_in_circle(g),main=title,vertex.label.cex=.7)}
+png(file.path(output_dir(),"Supplementary_Figure_S2.png"),width=3000,height=2400,res=300);par(mfrow=c(2,2),mar=c(1,1,3,1));for(n in names(sets))plot_one(sets[[n]],n);dev.off()
+tiff(file.path(output_dir(),"Supplementary_Figure_S2.tiff"),width=10,height=8,units="in",res=600,compression="lzw");par(mfrow=c(2,2),mar=c(1,1,3,1));for(n in names(sets))plot_one(sets[[n]],n);dev.off()
