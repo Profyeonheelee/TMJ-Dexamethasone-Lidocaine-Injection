@@ -1,9 +1,10 @@
 # TMJ Dexamethasone–Lidocaine Injection
 
+[svg](https://github.com/Profyeonheelee/TMJ-Dexamethasone-Lidocaine-Injection/tree/main#tmj-dexamethasonelidocaine-injection)
+
 Analysis code for the study **Longitudinal Clinical Outcomes After Intra-Articular Dexamethasone–Lidocaine Injection for Temporomandibular Joint Arthralgia**.
 
-The repository contains parallel R and Python scripts for the main and supplementary analyses. The analytic dataset is not included because it contains clinical data subject to institutional and ethical restrictions.
-Analyses are provided in both R and Python where applicable. **The R implementation was used for the primary mixed-effects models reported in the manuscript.**
+The repository contains parallel R and Python scripts for the main and supplementary analyses. The analytic dataset is not included because it contains clinical data subject to institutional and ethical restrictions. Analyses are provided in both R and Python where applicable. **The R implementation was used for the primary mixed-effects models reported in the manuscript.**
 
 ## Data
 
@@ -14,51 +15,58 @@ The scripts use:
 The workbook path can be supplied as the first command-line argument, set with the `TMJ_DATA` environment variable, or placed in the `data/` directory.
 
 ```bash
-python Python/Table_1.py "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
-Rscript R/Table_1.R "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
+python Table_1.py "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
+Rscript Table_1.R "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
 ```
 
 ## Main manuscript
 
 | File | Analysis |
 | --- | --- |
-| `Table_1` | Baseline characteristics according to baseline pain severity |
-| `Table_2` | Baseline-to-first-follow-up paired changes |
-| `Table_3` | Longitudinal mixed-effects models |
-| `Table_4` | Final outcomes and direction of change |
-| `Figure_1` | Overall longitudinal clinical trajectories |
-| `Figure_2` | Longitudinal trajectories by three-level baseline pain severity |
+| `Table_1.R` / `Table_1.py` | Baseline characteristics according to baseline pain severity |
+| `Table_2.R` / `Table_2.py` | Baseline-to-first-follow-up paired changes |
+| `Table_3.R` / `Table_3.py` | Longitudinal mixed-effects models |
+| `Table_4.R` / `Table_4.py` | Final outcomes and direction of change |
+| `Figure_1.R` / `Figure_1.py` | Overall longitudinal clinical trajectories |
+| `Figure_2.R` / `Figure_2.py` | Longitudinal trajectories by three-level baseline pain severity |
 
 ## Supplementary material
 
 | File | Analysis |
 | --- | --- |
-| `Supplementary_Table_S1` | Visit-wise longitudinal summary |
-| `Supplementary_Table_S2` | Visit-wise outcomes by three-level baseline pain severity |
-| `Supplementary_Table_S3` | Outcomes according to final VAS change category |
-| `Supplementary_Table_S4` | Site-specific pain transitions |
-| `Supplementary_Table_S5` | Early pain-presence and direction-of-change analyses |
-| `Supplementary_Table_S6` | Baseline and early follow-up characteristics by repeat-injection status |
-| `Supplementary_Figure_S1` | Early direction-of-change categories |
-| `Supplementary_Figure_S2` | Visit-to-visit correlation networks |
-| `Supplementary_Figure_S3` | Correlation structure of pain, mouth opening, and pain-location variables |
+| `Supplementary_Table_S1.R` / `Supplementary_Table_S1.py` | Visit-wise longitudinal summary |
+| `Supplementary_Table_S2.R` / `Supplementary_Table_S2.py` | Visit-wise outcomes by three-level baseline pain severity |
+| `Supplementary_Table_S3.R` / `Supplementary_Table_S3.py` | Outcomes according to final VAS change category |
+| `Supplementary_Table_S4.R` / `Supplementary_Table_S4.py` | Site-specific pain transitions |
+| `Supplementary_Table_S5.R` / `Supplementary_Table_S5.py` | Early pain-presence and direction-of-change analyses |
+| `Supplementary_Table_S6.R` / `Supplementary_Table_S6.py` | Baseline and early follow-up characteristics by repeat-injection status |
+| `Supplementary_Figure_S1.R` / `Supplementary_Figure_S1.py` | Early direction-of-change categories |
+| `Supplementary_Figure_S2.R` / `Supplementary_Figure_S2.py` | Visit-to-visit correlation networks |
+| `Supplementary_Figure_S3.R` / `Supplementary_Figure_S3.py` | Correlation structure of pain, mouth opening, and pain-location variables |
 
 ## Python
 
+The Python scripts are stored directly in the repository root.
+
+Main packages used include `pandas`, `NumPy`, `SciPy`, `statsmodels`, `matplotlib`, and `NetworkX`.
+
+Run an individual analysis from the repository directory, for example:
+
 ```bash
-pip install -r Python/requirements.txt
-python Python/run_all.py "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
+python Table_1.py "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
 ```
 
 ## R
 
-Install the packages listed in `R/R_packages.txt`, then run:
+The R scripts are also stored directly in the repository root.
+
+Main packages used include `readxl`, `dplyr`, `lme4`, and `geepack`.
+
+Run an individual analysis from the repository directory, for example:
 
 ```bash
-Rscript R/run_all.R "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
+Rscript Table_1.R "C:/path/to/Dexamethasone_Final_Analytic_Dataset_191.xlsx"
 ```
-
-Output files are written to `outputs/python/` and `outputs/R/`.
 
 ## Analysis notes
 
