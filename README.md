@@ -3,6 +3,7 @@
 Analysis code for the study **Longitudinal Clinical Outcomes After Intra-Articular Dexamethasone–Lidocaine Injection for Temporomandibular Joint Arthralgia**.
 
 The repository contains parallel R and Python scripts for the main and supplementary analyses. The analytic dataset is not included because it contains clinical data subject to institutional and ethical restrictions.
+Analyses are provided in both R and Python where applicable. **The R implementation was used for the primary mixed-effects models reported in the manuscript.**
 
 ## Data
 
